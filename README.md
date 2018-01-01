@@ -2,9 +2,19 @@
 This repository contains Python code used in NIPS 2017 paper: Fitting Low-Rank Tensors in Constant Time by K. Hayashi and Y. Yoshida.
 
 ## Requirements
+- python 2
 - [scikit-tensor](https://github.com/mnick/scikit-tensor)
 
+
 ## Usage
+
+```sh
+virtualenv env -p /usr/bin/python
+source env/bin/activate
+pip install -r requirements.txt
+```
+
+
 The function `approx_residual(X, ranks, k)` computes the residual (approximation) error of low-rank tensor, where `X` is the tensor to be decomposed (numpy array), `ranks` is the Tucker rank (tuple), and `k` is the number of samples (int). Note that the length of `ranks` should be the same as the dimension of `X` (i.e., the length of `X.shape`).
 
 ## Demo

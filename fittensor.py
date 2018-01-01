@@ -36,11 +36,8 @@ def approx_residual(X, ranks, k):
     return scale * residual(miniX, ranks)
 
 
-def mach(X, ranks, p):
-    """
-    Implementation of MACH prposed in
-    C. E. Tsourakakis. Mach: Fast randomized tensor decompositions. In ICDM, pages 689–700, 2010.
-    """
+def mach(X, ranks, p):    
+    # implementation of MACH proposed in Fast randomized tensor decompositions, ICDM 2010
 
     prod_ns = np.prod(X.shape)
     indn = np.random.choice(prod_ns, int(prod_ns * p), replace=False)
