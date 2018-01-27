@@ -6,7 +6,9 @@ from scipy.linalg import eigh
 def residual(X, ranks, method='hooi', p=None):
     X = st.dtensor(X)
     if method == 'hooi':
-        C, Us = st.tucker_hooi(X, ranks, init='nvecs')
+        C, Us = st.tucker_hooi(X, ranks, init='nvecs') 
+        # sktensor tucker hooi solver for 
+        # l_{Ri...Rk}(X|_{S1,...Sk}) at Hayashi, et al, NIPS2017
     elif method == 'randomized':
         C, Us = randomized_hooi(X, ranks)
     elif method == 'mach':
@@ -92,7 +94,7 @@ if __name__ == "__main__":
             (n, r) = (ns[i], ranks[i])
             Us.append(np.random.randn(n * r).reshape((n, r)))
 
-        A = st.ttm(st.dtensor(C), Us)
+        A = st.ttm(st.dtensor(C), Us) #tensor times matrix product
         A /= np.sqrt(np.mean(A ** 2))
         A += np.random.randn(np.prod(ns)).reshape(ns) * sigma
         return A
